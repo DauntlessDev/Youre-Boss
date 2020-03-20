@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android">
+    <item
+        android:id="@+id/nav_home"
+        android:icon="@drawable/ic_home_black_24dp"
+        android:title="Home"/>
+
+    <item
+        android:id="@+id/nav_contract"
+        android:icon="@drawable/ic_content_paste_black_24dp"
+        android:title="Contract"/>
+
+    <item
+        android:id="@+id/nav_milestone"
+        android:icon="@drawable/ic_timeline_black_24dp"
+        android:title="Milestone"/>
+
+    <item
+        android:id="@+id/nav_profile"
+        android:icon="@drawable/ic_person_outline_black_24dp"
+        android:title="Profile"
+        />
+
+
+</menu>
