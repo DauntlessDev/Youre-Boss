@@ -46,6 +46,8 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
         onCreate(sqLiteDatabase);
     }
 
+
+
     public long addContract(Contract contract){
         SQLiteDatabase db = this.getWritableDatabase();
         ContentValues contentValues = new ContentValues();
@@ -54,15 +56,28 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
         contentValues.put(CONT_DATE, contract.getDatetime());
 
         long res = db.insert(CONT_TABLE, null, contentValues);
-        db.close();
         Log.i("Res", String.valueOf(res));
         return res;
 
     }
 
+    public long updateContract(Contract contract){
+        SQLiteDatabase db = this.getWritableDatabase();
+        ContentValues contentValues = new ContentValues();
+        contentValues.put(CONT_TITLE, contract.getTitle());
+        contentValues.put(CONT_CONTENT, contract.getContent());
+        contentValues.put(CONT_DATE, contract.getDatetime());
+
+        long res = db.update(CONT_TABLE, contentValues,
+                CONT_ID + "=?",new String[] {String.valueOf(contract.getId())});
+        return res;
+
+    }
+
+
     public Contract getSingleContract(int id){
         SQLiteDatabase db = this.getReadableDatabase();
-        Cursor cursor = db.query(DATABASE_NAME, new String[]{CONT_ID,CONT_TITLE,CONT_CONTENT,CONT_DATE},
+        Cursor cursor = db.query(CONT_TABLE, new String[]{CONT_ID,CONT_TITLE,CONT_CONTENT,CONT_DATE},
         CONT_ID + "=?", new String[]{String.valueOf(id)}, null,null,null);
 
         if (cursor != null){
@@ -73,7 +88,6 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
                 cursor.getString(1),
                 cursor.getString(2),
                 cursor.getString(3));
-
         return contract;
     }
 
@@ -97,6 +111,11 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
         }
 
         return listOfContracts;
+    }
+
+    void deleteContract(int id){
+        SQLiteDatabase db = this.getWritableDatabase();
+        db.delete(CONT_TABLE, CONT_ID + "=?", new String[]{String.valueOf(id)});
     }
 
 }

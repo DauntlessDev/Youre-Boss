@@ -26,10 +26,14 @@ public class ContractFragment extends Fragment {
     ContractAdapter contractAdapter;
     List<Contract> contractList;
 
+
+    DatabaseHelper db;
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_contract, container, false);
+        db = new DatabaseHelper(getActivity());
+
         final Intent intent = new Intent(getActivity(), ContractActivity.class);
 
         FloatingActionButton fab = root.findViewById(R.id.floatingActionButton);
@@ -40,14 +44,24 @@ public class ContractFragment extends Fragment {
             }
         });
 
-        DatabaseHelper db = new DatabaseHelper(getActivity());
-        contractList = db.getAllContract();
-
-        contractAdapter = new ContractAdapter(getActivity(), contractList);
-        recyclerView = root.findViewById(R.id.listofContracts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(contractAdapter);
 
         return root;
+    }
+
+    @Override
+    public void onDestroyView() {
+        db.close();
+        super.onDestroyView();
+    }
+
+    @Override
+    public void onResume() {
+
+        contractList = db.getAllContract();
+        contractAdapter = new ContractAdapter(getActivity(), contractList);
+        recyclerView = getView().findViewById(R.id.listofContracts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(contractAdapter);
+        super.onResume();
     }
 }
