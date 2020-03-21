@@ -1,8 +1,7 @@
-package com.dauntlessdev.youreboss;
+package com.dauntlessdev.youreboss.Controller;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.util.Log;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
@@ -11,10 +10,9 @@ import android.widget.Toast;
 
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
-import androidx.fragment.app.Fragment;
 
-import com.dauntlessdev.youreboss.Controller.HomeFragment;
 import com.dauntlessdev.youreboss.Model.Contract;
+import com.dauntlessdev.youreboss.R;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;

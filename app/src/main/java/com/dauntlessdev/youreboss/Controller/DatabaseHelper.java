@@ -1,4 +1,4 @@
-package com.dauntlessdev.youreboss;
+package com.dauntlessdev.youreboss.Controller;
 
 import android.content.ContentValues;
 import android.content.Context;

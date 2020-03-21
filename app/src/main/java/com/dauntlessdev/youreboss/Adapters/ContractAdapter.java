@@ -10,7 +10,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dauntlessdev.youreboss.ContractActivity;
+import com.dauntlessdev.youreboss.Controller.ContractActivity;
 import com.dauntlessdev.youreboss.Model.Contract;
 import com.dauntlessdev.youreboss.R;
 

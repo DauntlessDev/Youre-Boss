@@ -1,4 +1,4 @@
-package com.dauntlessdev.youreboss;
+package com.dauntlessdev.youreboss.Controller;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -6,11 +6,11 @@ import androidx.fragment.app.Fragment;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-
-import com.dauntlessdev.youreboss.Controller.ContractFragment;
-import com.dauntlessdev.youreboss.Controller.HomeFragment;
-import com.dauntlessdev.youreboss.Controller.MilestoneFragment;
-import com.dauntlessdev.youreboss.Controller.ProfileFragment;
+import com.dauntlessdev.youreboss.R;
+import com.dauntlessdev.youreboss.UI.ContractFragment;
+import com.dauntlessdev.youreboss.UI.HomeFragment;
+import com.dauntlessdev.youreboss.UI.MilestoneFragment;
+import com.dauntlessdev.youreboss.UI.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 public class MainActivity extends AppCompatActivity {

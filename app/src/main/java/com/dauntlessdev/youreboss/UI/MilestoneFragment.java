@@ -1,4 +1,4 @@
-package com.dauntlessdev.youreboss.Controller;
+package com.dauntlessdev.youreboss.UI;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -11,12 +11,12 @@ import androidx.fragment.app.Fragment;
 
 import com.dauntlessdev.youreboss.R;
 
-public class ProfileFragment extends Fragment {
+public class MilestoneFragment extends Fragment {
 
     @Nullable
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
-        View root = inflater.inflate(R.layout.fragment_profile, container, false);
+        View root = inflater.inflate(R.layout.fragment_milestone, container, false);
         return root;
     }
 }

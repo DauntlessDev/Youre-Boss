@@ -1,4 +1,4 @@
-package com.dauntlessdev.youreboss.Controller;
+package com.dauntlessdev.youreboss.UI;
 
 import android.os.Bundle;
 import android.view.LayoutInflater;

@@ -1,4 +1,4 @@
-package com.dauntlessdev.youreboss.Controller;
+package com.dauntlessdev.youreboss.UI;
 
 import android.content.Intent;
 import android.os.Bundle;
@@ -13,8 +13,8 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dauntlessdev.youreboss.Adapters.ContractAdapter;
-import com.dauntlessdev.youreboss.ContractActivity;
-import com.dauntlessdev.youreboss.DatabaseHelper;
+import com.dauntlessdev.youreboss.Controller.ContractActivity;
+import com.dauntlessdev.youreboss.Controller.DatabaseHelper;
 import com.dauntlessdev.youreboss.Model.Contract;
 import com.dauntlessdev.youreboss.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -34,8 +34,8 @@ public class ContractFragment extends Fragment {
         final View root = inflater.inflate(R.layout.fragment_contract, container, false);
         db = new DatabaseHelper(getActivity());
 
+        //for fab, clicking it will make you add a new contract
         final Intent intent = new Intent(getActivity(), ContractActivity.class);
-
         FloatingActionButton fab = root.findViewById(R.id.floatingActionButton);
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -50,6 +50,7 @@ public class ContractFragment extends Fragment {
 
     @Override
     public void onDestroyView() {
+        // on finish of using database close it
         db.close();
         super.onDestroyView();
     }
@@ -57,6 +58,7 @@ public class ContractFragment extends Fragment {
     @Override
     public void onResume() {
 
+        //every time you go here do all the updating of recycle view
         contractList = db.getAllContract();
         contractAdapter = new ContractAdapter(getActivity(), contractList);
         recyclerView = getView().findViewById(R.id.listofContracts);
