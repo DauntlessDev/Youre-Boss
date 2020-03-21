@@ -13,6 +13,7 @@ import androidx.appcompat.widget.Toolbar;
 
 import com.dauntlessdev.youreboss.Model.Contract;
 import com.dauntlessdev.youreboss.R;
+import com.dauntlessdev.youreboss.UI.ContractFragment;
 
 import java.text.SimpleDateFormat;
 import java.util.Calendar;
@@ -96,5 +97,6 @@ public class ContractActivity extends AppCompatActivity {
             db.addContract(contract);
 
         }
+
     }
 }

@@ -44,7 +44,6 @@ public class ContractFragment extends Fragment {
             }
         });
 
-
         return root;
     }
 
@@ -59,6 +58,7 @@ public class ContractFragment extends Fragment {
     public void onResume() {
 
         //every time you go here do all the updating of recycle view
+
         contractList = db.getAllContract();
         contractAdapter = new ContractAdapter(getActivity(), contractList);
         recyclerView = getView().findViewById(R.id.listofContracts);
