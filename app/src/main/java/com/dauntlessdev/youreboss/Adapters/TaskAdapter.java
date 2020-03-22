@@ -1,24 +1,18 @@
 package com.dauntlessdev.youreboss.Adapters;
 
 import android.content.Context;
-import android.content.Intent;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dauntlessdev.youreboss.Controller.ContractActivity;
-import com.dauntlessdev.youreboss.Model.Contract;
 import com.dauntlessdev.youreboss.Model.Task;
 import com.dauntlessdev.youreboss.R;
-import com.dauntlessdev.youreboss.UI.HomeFragment;
 import com.dauntlessdev.youreboss.UI.TaskBottomSheet;
 
 import java.util.List;
@@ -55,15 +49,14 @@ public class TaskAdapter extends RecyclerView.Adapter<TaskAdapter.ViewHolder>{
         TextView name;
         public ViewHolder(@NonNull View itemView) {
             super(itemView);
-            name = itemView.findViewById(R.id.checkBox);
+            name = itemView.findViewById(R.id.taskItemTextView);
 
-            itemView.setOnLongClickListener(new View.OnLongClickListener() {
+            itemView.setOnClickListener(new View.OnClickListener() {
                 @Override
-                public boolean onLongClick(View view) {
+                public void onClick(View view) {
                     FragmentManager fragmentManager = ((FragmentActivity) view.getContext()).getSupportFragmentManager();
                     TaskBottomSheet taskBottomSheet = new TaskBottomSheet();
-                    taskBottomSheet.show(fragmentManager,"taskBottomSheet");
-                    return true;
+                    taskBottomSheet.show(fragmentManager, String.valueOf(taskList.get(getAdapterPosition()).getId()));
                 }
             });
         }

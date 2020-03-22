@@ -11,6 +11,7 @@ import android.widget.Toast;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.appcompat.widget.Toolbar;
 
+import com.dauntlessdev.youreboss.Adapters.ContractAdapter;
 import com.dauntlessdev.youreboss.Model.Contract;
 import com.dauntlessdev.youreboss.R;
 import com.dauntlessdev.youreboss.UI.ContractFragment;
@@ -95,8 +96,15 @@ public class ContractActivity extends AppCompatActivity {
         }else{
             contract = new Contract(titleText.getText().toString(), contentText.getText().toString(),formattedDate);
             db.addContract(contract);
-
         }
+    }
 
+    @Override
+    protected void onPause() {
+        super.onPause();
+        //on exit refresh the contract recycler view
+        ContractFragment.contractList = db.getAllContract();
+        ContractFragment.contractAdapter = new ContractAdapter(this, ContractFragment.contractList);
+        ContractFragment.recyclerView.setAdapter(ContractFragment.contractAdapter);
     }
 }

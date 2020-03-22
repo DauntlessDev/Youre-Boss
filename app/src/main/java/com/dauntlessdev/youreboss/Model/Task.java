@@ -4,9 +4,6 @@ public class Task {
     private int id;
     private String name;
 
-    public Task(){
-    }
-
     public Task(String name){
         this.name = name;
     }

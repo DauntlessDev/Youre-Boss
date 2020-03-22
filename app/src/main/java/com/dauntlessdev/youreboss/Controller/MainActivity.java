@@ -13,6 +13,7 @@ import com.dauntlessdev.youreboss.UI.MilestoneFragment;
 import com.dauntlessdev.youreboss.UI.ProfileFragment;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
+/* The main activity where all fragements are all located */
 public class MainActivity extends AppCompatActivity {
 
     @Override

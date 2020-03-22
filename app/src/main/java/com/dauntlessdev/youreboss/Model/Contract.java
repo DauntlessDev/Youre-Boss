@@ -6,9 +6,6 @@ public class Contract {
     private String content;
     private String datetime;
 
-    public Contract(){
-    }
-
     public Contract(String title, String content, String datetime){
         this.title = title;
         this.content = content;

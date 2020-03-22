@@ -22,9 +22,9 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 import java.util.List;
 
 public class ContractFragment extends Fragment {
-    RecyclerView recyclerView;
-    ContractAdapter contractAdapter;
-    List<Contract> contractList;
+    public static RecyclerView recyclerView;
+    public static ContractAdapter contractAdapter;
+    public static List<Contract> contractList;
 
 
     DatabaseHelper db;
@@ -33,6 +33,13 @@ public class ContractFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, @Nullable ViewGroup container, @Nullable Bundle savedInstanceState) {
         final View root = inflater.inflate(R.layout.fragment_contract, container, false);
         db = new DatabaseHelper(getActivity());
+
+        //for recycler view setup on create
+        contractList = db.getAllContract();
+        contractAdapter = new ContractAdapter(getActivity(), contractList);
+        recyclerView = root.findViewById(R.id.listofContracts);
+        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
+        recyclerView.setAdapter(contractAdapter);
 
         //for fab, clicking it will make you add a new contract
         final Intent intent = new Intent(getActivity(), ContractActivity.class);
@@ -54,16 +61,4 @@ public class ContractFragment extends Fragment {
         super.onDestroyView();
     }
 
-    @Override
-    public void onResume() {
-
-        //every time you go here do all the updating of recycle view
-
-        contractList = db.getAllContract();
-        contractAdapter = new ContractAdapter(getActivity(), contractList);
-        recyclerView = getView().findViewById(R.id.listofContracts);
-        recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
-        recyclerView.setAdapter(contractAdapter);
-        super.onResume();
-    }
 }

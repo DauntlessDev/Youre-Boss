@@ -5,8 +5,6 @@ import android.content.Context;
 import android.database.Cursor;
 import android.database.sqlite.SQLiteDatabase;
 import android.database.sqlite.SQLiteOpenHelper;
-import android.util.Log;
-
 import com.dauntlessdev.youreboss.Model.Contract;
 import com.dauntlessdev.youreboss.Model.Task;
 
@@ -156,6 +154,21 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
 
     }
 
+
+    public Task getSingleTask(int id){
+        SQLiteDatabase db = this.getReadableDatabase();
+        Cursor cursor = db.query(TASK_TABLE, new String[]{TASK_ID,TASK_NAME},
+                TASK_ID + "=?", new String[]{String.valueOf(id)}, null,null,null);
+
+        if (cursor != null){
+            cursor.moveToFirst();
+        }
+
+        Task task = new Task(cursor.getInt(0),
+                cursor.getString(1));
+        return task;
+    }
+
     public ArrayList<Task> getAllTask(){
         ArrayList<Task> listOfTasks = new ArrayList<>();
         SQLiteDatabase db = this.getReadableDatabase();
@@ -175,7 +188,7 @@ public class DatabaseHelper  extends SQLiteOpenHelper {
         return listOfTasks;
     }
 
-    void deleteTask(int id){
+    public void deleteTask(int id){
         SQLiteDatabase db = this.getWritableDatabase();
         db.delete(TASK_TABLE, TASK_ID + "=?", new String[]{String.valueOf(id)});
     }
