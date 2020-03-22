@@ -32,7 +32,7 @@ public class HomeFragment extends Fragment {
         db = new DatabaseHelper(getActivity());
 
         //set up the recycler view
-        taskList = db.getAllTask();
+        taskList = db.getAllTask(1);
         taskAdapter = new TaskAdapter(getActivity(), taskList);
         recyclerView = root.findViewById(R.id.taskRecyclerView);
         recyclerView.setLayoutManager(new LinearLayoutManager(getActivity()));
